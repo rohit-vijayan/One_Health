@@ -22,6 +22,24 @@ export default function DashboardScreen({ onNavigate }: Props) {
       </div>
 
       <div className="flex-1 overflow-y-auto px-5 py-6 space-y-4">
+        <button
+          onClick={() => onNavigate('riskinsights')}
+          className="w-full bg-gradient-to-r from-red-600 to-orange-600 text-white p-5 rounded-2xl shadow-lg hover:shadow-xl transition-all hover:scale-[1.02] text-left"
+        >
+          <div className="flex items-center justify-between mb-2">
+            <div>
+              <h3 className="font-bold text-xl mb-1">📊 AI Risk Insights Dashboard</h3>
+              <p className="text-red-100 text-sm">Comprehensive risk prediction & analysis for policy makers</p>
+            </div>
+            <div className="bg-white/20 backdrop-blur-sm p-3 rounded-xl">
+              <TrendingUp className="w-6 h-6" />
+            </div>
+          </div>
+          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 mt-3">
+            <p className="text-sm font-semibold">View unified map • AI forecasting • Automated alerts • Policy reports</p>
+          </div>
+        </button>
+
         <div className="bg-gradient-to-br from-red-500 to-orange-600 rounded-2xl shadow-lg p-5 text-white">
           <div className="flex items-center justify-between mb-3">
             <h3 className="font-bold text-lg">AI Risk Index</h3>

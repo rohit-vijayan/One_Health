@@ -6,8 +6,9 @@ import EnvironmentalScreen from './screens/EnvironmentalScreen';
 import DashboardScreen from './screens/DashboardScreen';
 import CommunityScreen from './screens/CommunityScreen';
 import GrowGreenScreen from './screens/GrowGreenScreen';
+import RiskInsightsScreen from './screens/RiskInsightsScreen';
 
-export type Screen = 'onboarding' | 'human' | 'veterinary' | 'environmental' | 'dashboard' | 'community' | 'growgreen';
+export type Screen = 'onboarding' | 'human' | 'veterinary' | 'environmental' | 'dashboard' | 'community' | 'growgreen' | 'riskinsights';
 
 function App() {
   const [currentScreen, setCurrentScreen] = useState<Screen>('onboarding');
@@ -28,6 +29,8 @@ function App() {
         return <CommunityScreen onNavigate={setCurrentScreen} />;
       case 'growgreen':
         return <GrowGreenScreen onNavigate={setCurrentScreen} />;
+      case 'riskinsights':
+        return <RiskInsightsScreen onNavigate={setCurrentScreen} />;
       default:
         return <OnboardingScreen onGetStarted={() => setCurrentScreen('human')} />;
     }

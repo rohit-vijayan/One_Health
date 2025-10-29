@@ -1,11 +1,14 @@
 import { Camera, AlertTriangle, Shield, BookOpen, ChevronRight, Users, ScanLine } from 'lucide-react';
 import { Screen } from '../App';
+import { useState } from 'react';
+import BestPracticesHub from '../components/BestPracticesHub';
 
 interface Props {
   onNavigate: (screen: Screen) => void;
 }
 
 export default function VeterinaryScreen({ onNavigate }: Props) {
+  const [showPracticesHub, setShowPracticesHub] = useState(false);
   const recentReports = [
     { disease: 'Brucellosis', cases: 3, severity: 'moderate', location: 'Raichur District, Karnataka' },
     { disease: 'Foot & Mouth Disease', cases: 7, severity: 'high', location: 'Amravati, Maharashtra' },
@@ -135,42 +138,49 @@ export default function VeterinaryScreen({ onNavigate }: Props) {
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-md p-5 border border-amber-200">
+        <button
+          onClick={() => setShowPracticesHub(true)}
+          className="bg-white rounded-2xl shadow-md p-5 border border-amber-200 hover:shadow-lg transition-all hover:scale-[1.02] text-left w-full"
+        >
           <div className="flex items-start space-x-4">
             <div className="bg-gradient-to-br from-amber-400 to-yellow-500 p-3 rounded-xl">
               <BookOpen className="w-6 h-6 text-white" />
             </div>
             <div className="flex-1">
               <h3 className="font-bold text-gray-800 text-lg mb-1">Best Practices Hub</h3>
-              <p className="text-gray-600 text-sm mb-3">AI-curated articles & voice guides</p>
+              <p className="text-gray-600 text-sm mb-3">AI-curated articles & voice guides in multiple languages</p>
 
-              <div className="space-y-2">
+              <div className="space-y-2 mb-3">
                 <div className="bg-gradient-to-r from-amber-50 to-yellow-50 rounded-lg p-3 border border-amber-200 flex items-center space-x-3">
                   <div className="text-2xl">🎙️</div>
                   <div className="flex-1">
                     <p className="text-xs font-semibold text-gray-800">Monsoon Livestock Care</p>
-                    <p className="text-xs text-gray-500">Hindi • 5 min listen</p>
+                    <p className="text-xs text-gray-500">Hindi • 5 min audio</p>
                   </div>
-                  <button className="bg-amber-500 text-white p-2 rounded-full hover:bg-amber-600">
-                    <span className="text-xs">▶️</span>
-                  </button>
                 </div>
 
                 <div className="bg-gradient-to-r from-amber-50 to-yellow-50 rounded-lg p-3 border border-amber-200 flex items-center space-x-3">
                   <div className="text-2xl">📖</div>
                   <div className="flex-1">
                     <p className="text-xs font-semibold text-gray-800">Preventing FMD Outbreaks</p>
-                    <p className="text-xs text-gray-500">Read • 8 min</p>
+                    <p className="text-xs text-gray-500">English • 8 min read</p>
                   </div>
-                  <button className="text-amber-600 font-semibold text-xs">
-                    Read →
-                  </button>
                 </div>
+              </div>
+
+              <div className="inline-flex items-center space-x-2 bg-amber-500 text-white px-4 py-2 rounded-lg text-sm font-semibold">
+                <span>View All Resources</span>
+                <ChevronRight className="w-4 h-4" />
               </div>
             </div>
           </div>
-        </div>
+        </button>
       </div>
+
+      <BestPracticesHub
+        isOpen={showPracticesHub}
+        onClose={() => setShowPracticesHub(false)}
+      />
 
       <div className="bg-white border-t border-gray-200 px-6 py-4 shadow-lg">
         <div className="grid grid-cols-4 gap-3">
